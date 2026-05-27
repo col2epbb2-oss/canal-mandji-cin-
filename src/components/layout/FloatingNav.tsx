@@ -21,6 +21,27 @@ export function FloatingNav() {
     }
     setIsScrolled(latest > 50);
   });
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (path.startsWith('/#') && location.pathname === '/') {
+      e.preventDefault();
+      const id = path.replace('/#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 100;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+    setMobileMenuOpen(false);
+  };
   const navLinks = [
   {
     name: t.nav.home,
@@ -83,6 +104,7 @@ export function FloatingNav() {
               <Link
                 key={link.name}
                 to={link.path}
+                onClick={(e) => handleNavClick(e, link.path)}
                 className="text-sm font-medium text-white/70 hover:text-white hover:text-shadow-neon transition-all">
                 
                   {link.name}
@@ -116,9 +138,9 @@ export function FloatingNav() {
                 
                 {t.nav.trackTicket}
               </button>
-              <button className="text-white/70 hover:text-white transition-colors">
+              <Link to="/movies" className="text-white/70 hover:text-white transition-colors">
                 <Search className="w-5 h-5" />
-              </button>
+              </Link>
               <Link
                 to="/admin"
                 className="text-white/70 hover:text-white transition-colors">
@@ -127,6 +149,7 @@ export function FloatingNav() {
               </Link>
               <Link
                 to="/#movies"
+                onClick={(e) => handleNavClick(e, '/#movies')}
                 className="bg-cinema-red/10 text-cinema-red border border-cinema-red/30 hover:bg-cinema-red hover:text-white hover:shadow-neon-red px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2">
                 
                 <Ticket className="w-4 h-4" />
@@ -163,7 +186,7 @@ export function FloatingNav() {
           <Link
             key={link.name}
             to={link.path}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, link.path)}
             className="text-2xl font-heading text-white/80 hover:text-cinema-red">
             
                 {link.name}

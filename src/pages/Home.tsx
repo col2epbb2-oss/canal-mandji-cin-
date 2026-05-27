@@ -362,18 +362,14 @@ export function Home() {
               {t.hero.subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#movies">
-                <NeonButton size="lg" className="w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              <Link to={`/booking/${nowShowing[0]?.id || ''}`} className="w-full sm:w-auto">
+                <NeonButton size="lg" fullWidth>
                   {t.hero.bookTickets}
                 </NeonButton>
-              </a>
-              <a href="#trailers">
-                <NeonButton
-                  variant="glass"
-                  size="lg"
-                  className="w-full sm:w-auto">
-                  
+              </Link>
+              <a href="#trailers" className="w-full sm:w-auto">
+                <NeonButton variant="glass" size="lg" fullWidth>
                   <Play className="w-5 h-5 mr-2" />
                   {t.hero.watchTrailers}
                 </NeonButton>
@@ -418,7 +414,7 @@ export function Home() {
                   key={dayKey} 
                   onClick={() => setActiveDay(idx)}
                   className={cn(
-                    "px-6 py-3 rounded-xl font-medium transition-all whitespace-nowrap", 
+                    "px-4 py-2 md:px-6 md:py-3 text-sm md:text-base rounded-xl font-medium transition-all whitespace-nowrap", 
                     activeDay === idx 
                       ? "bg-cinema-red text-white shadow-neon-red" 
                       : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
@@ -436,16 +432,16 @@ export function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                 >
-                  <GlassCard className="p-4 flex gap-6 items-center hover:bg-white/5 transition-colors group">
-                     <div className="w-24 h-36 shrink-0 rounded-lg overflow-hidden relative">
+                  <GlassCard className="p-3 md:p-4 flex gap-4 md:gap-6 items-center hover:bg-white/5 transition-colors group">
+                     <div className="w-20 h-28 md:w-24 md:h-36 shrink-0 rounded-lg overflow-hidden relative">
                        <img src={movie.posterUrl} alt={movie.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                      </div>
-                     <div className="flex-1 py-2">
-                        <h3 className="font-heading text-2xl text-white mb-3 line-clamp-1">{movie.title}</h3>
-                        <div className="flex flex-wrap gap-2 mb-4">
+                     <div className="flex-1 py-1 md:py-2">
+                        <h3 className="font-heading text-xl md:text-2xl text-white mb-2 md:mb-3 line-clamp-1">{movie.title}</h3>
+                        <div className="flex flex-wrap gap-2 mb-2 md:mb-4">
                            {dailyTimes.map(time => (
                               <Link key={time} to={`/booking/${movie.id}?date=${t.days[daysKeys[activeDay]]}&time=${time}`}>
-                                 <span className="px-3 py-1 bg-white/10 border border-white/10 text-white/80 rounded-md hover:border-cinema-red hover:bg-cinema-red/10 hover:text-cinema-red transition-all text-sm cursor-pointer shadow-sm">
+                                 <span className="px-2 py-1 md:px-3 text-xs md:text-sm bg-white/10 border border-white/10 text-white/80 rounded-md hover:border-cinema-red hover:bg-cinema-red/10 hover:text-cinema-red transition-all cursor-pointer shadow-sm">
                                    {time}
                                  </span>
                               </Link>

@@ -107,7 +107,7 @@ export function Movies() {
               key={opt.id}
               onClick={() => setStatus(opt.id)}
               className={cn(
-                'px-4 py-2 text-xs font-medium rounded-lg transition-all whitespace-nowrap',
+                'px-3 py-1.5 md:px-4 md:py-2 text-xs font-medium rounded-lg transition-all whitespace-nowrap',
                 status === opt.id ?
                 'bg-cinema-red text-white shadow-neon-red' :
                 'text-white/60 hover:text-white'

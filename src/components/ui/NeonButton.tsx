@@ -27,9 +27,9 @@ export function NeonButton({
     glass: 'glass-panel text-white hover:bg-white/10 hover:border-white/20'
   };
   const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg font-bold uppercase tracking-wider'
+    sm: 'px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm',
+    md: 'px-4 py-2 text-sm md:px-6 md:py-3 md:text-base',
+    lg: 'px-5 py-2.5 text-base md:px-8 md:py-4 md:text-lg font-bold uppercase tracking-wider'
   };
   return (
     <motion.button

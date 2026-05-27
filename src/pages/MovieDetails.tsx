@@ -120,14 +120,14 @@ export function MovieDetails() {
                 <span>{movie.genre.map(g => t.genres[g as keyof typeof t.genres] || g).join(', ')}</span>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link to={`/booking/${movie.id}`}>
-                  <NeonButton size="lg" className="px-10">
+                  <NeonButton size="lg" className="w-full sm:w-auto px-10">
                     <Ticket className="w-5 h-5 mr-2" />
                     {t.hero.bookTickets}
                   </NeonButton>
                 </Link>
-                <NeonButton variant="glass" size="lg">
+                <NeonButton variant="glass" size="lg" className="w-full sm:w-auto">
                   <Play className="w-5 h-5 mr-2" />
                   {t.movie.officialTrailer}
                 </NeonButton>

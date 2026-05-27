@@ -30,7 +30,7 @@ export function MovieCard({ movie, index = 0 }: MovieCardProps) {
         duration: 0.5,
         delay: index * 0.1
       }}
-      className="group relative h-[450px] w-full rounded-2xl overflow-hidden">
+      className="group relative h-[380px] md:h-[450px] w-full rounded-2xl overflow-hidden">
       
       {/* Poster Image */}
       <img
@@ -56,8 +56,8 @@ export function MovieCard({ movie, index = 0 }: MovieCardProps) {
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-        <h3 className="font-heading text-3xl text-white mb-2 line-clamp-1">
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <h3 className="font-heading text-2xl md:text-3xl text-white mb-2 line-clamp-1">
           {movie.title}
         </h3>
 
